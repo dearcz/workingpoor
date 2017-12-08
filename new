@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    
+<head>
+    <title>woorkingpoor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    css-->
+    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        
+<!--js, bootstrap   -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--    <script src="js/jquery-3.2.1.slim.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    
+    <script>
+
+</script>
+
+<!--    font-->
+<style>
+    
+        #tofix1 {
+            z-index: 97;
+        }
+   
+        .fixed {
+            position: fixed;
+            top: 0;
+        }
+        
+        #moved {
+            position: absolute;
+            left: 0;
+            height: 50px;
+            width: 0;
+            background-color: coral;
+        }
+
+</style>
+    
+    
+</head>
+    
+   
+<body>
+<!--   opening -->
+    <div id="opening" class="container-fluid text-center">
+        <p>就算只賺十元</p>
+    </div>
+<!--status bar -->
+<div id="tofix1" class="container-fluid" style="background-color:rgb(64,64,64);width:100%;min-height:50px;">
+        <div id="moved"></div>
+</div>
+
+    
+<!--section1-->
+    <div id="section1" class="container-fluid">
+        <div class="row">
+<!--            1-->
+            <div class="col-md-7">我幾乎醒來之後，都在工作</div>
+            <div class="col-md-5"></div>
+<!--            2-->
+            <div class="col-md-7">因為時薪不高，所以想多做一點，看能不能賺多一點</div>
+            <div class="col-md-5"></div>
+<!--            3-->
+            <div class="col-md-7">但是，感覺好像兼再多份工，都沒差太多</div>
+            <div class="col-md-5"></div>
+<!--            4-->
+            <div class="col-md-7">很貴的東西一樣會被人買走，只是買的人都不是我</div>
+            <div class="col-md-5"></div>
+<!--            5-->
+            <div class="col-md-7">我經過餐廳，看到門口寫套餐一份500元</div>
+            <div class="col-md-5"></div>
+<!--            6-->
+            <div class="col-md-7">我手上的便當只要50元</div><div class="col-md-5"></div>
+<!--            7-->
+            <div class="col-md-7">我慢慢走回店裡，等下一個客人上門</div>
+            <div class="col-md-5"></div>
+<!--            8-->
+            <div class="col-md-7">就算只有10元，我也得賺</div>
+            <div class="col-md-5"></div>
+        </div> 
+    </div>
+    
+<!--    section2-->
+    
+    <div id="section2" class="container-fluid">
+<!--        <img id="animation" src="assets/21.jpg">-->
+    </div>
+<!--    section3-->
+    <div id="section3">
+    </div>
+<!--    section4-->
+    <div id="section4">
+        就算只有十元，我也得賺
+    </div>      
+
+
+    
+<script>
+        $(document).ready(function() {
+
+            var tofix1_height = $('#tofix1').position().top; //Reserve the original height
+
+            $(window).scroll(function() {
+            
+            var document_height = $(document).height() - $(window).height();
+                var window_width = $(window).width();
+                var scroll = $(window).scrollTop();
+                console.log(scroll);
+
+                var new_width = scroll / document_height * window_width;
+                $('#moved').css({
+                    'width': new_width
+                });
+
+                if (scroll >= tofix1_height) {
+                    $('#tofix1').addClass('fixed');
+                } else {
+                    $('#tofix1').removeClass('fixed');
+                }
+
+
+            });
+        });
+ 
+      </script>  
+<script>
+        $(function() {
+            var doch = $(document).height();
+            var winh = $(window).height();
+            
+            console.log("doch/winh: " + doch + "/" + winh);
+            
+            var nimgs = 5;
+            var scrollheight = (doch - winh) / nimgs;
+            var arr = [0];
+            var srcs = [];
+           
+            for (var i = 0; i < nimgs; i++) {
+                arr.push((i + 1) * scrollheight);
+                srcs.push("assets/real" + (i + 1) + ".jpg");
+            }
+            
+            
+            console.log(arr);
+
+            $(window).scroll(function() {
+                var scroll_position = $(document).scrollTop();
+                for (i = 0; i < arr.length - 1; i++) {
+                    if (arr[i] < scroll_position && arr[i + 1] > scroll_position) {
+                        console.log(srcs[i]);
+                        $('#animation').attr("src", srcs[i]);
+//                        $('#animation').animate({src:srcs[i]}, 300);
+                    }
+                }
+
+            });
+        });
+     
+   </script> 
+   
+    
+    
+</body>
+    
+    
+    
+    
+<footer>
+    Made by Ci Zhang@2017
+</footer>
+
+
+</html>
+
