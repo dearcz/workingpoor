@@ -1,2 +1,2 @@
 # workingpoor
-this is my project for application
+hi Jen Ting, this is our cooperating project
